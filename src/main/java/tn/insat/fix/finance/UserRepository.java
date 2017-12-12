@@ -1,0 +1,11 @@
+package tn.insat.fix.finance;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+public interface UserRepository extends CrudRepository<User, Long> {
+
+    @Query("select u from User u where u.userName=:userName")
+    public Iterable<User> findUserByUserName(@Param("userName") String userName);
+}
